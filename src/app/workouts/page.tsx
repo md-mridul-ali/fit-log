@@ -1,4 +1,6 @@
 import React from 'react';
+import WorkoutCard from '../components/workoutCard/WorkoutCard';
+import { IData } from '@/types/dataType';
 
 const getData = async() =>{
     const res = await fetch('https://api.abcz.workers.dev/api/fitlog');
@@ -10,13 +12,18 @@ const getData = async() =>{
 
 const WorkoutPage = async() => {
 
-    const data = await getData();
+    const datas = await getData();
+    
 
     return (
         <div>
-            <h2 className='text-white text-xl font-medium'>THE LIBRARY</h2>
-            <p className='text-gray-300'>Twelve lifts covering every major muscle group.</p>
-            <p>Total data: {data.length}</p>
+            <h2 className='text-white text-2xl font-bold'>THE LIBRARY</h2>
+            <p className='text-gray-500 mt-2'>Twelve lifts covering every major muscle group.</p>
+            <div className='mt-6 mb-12 grid grid-cols-3 gap-4'>
+                {
+                    datas.map((data: IData) => <WorkoutCard key={data.id} data={data}></WorkoutCard>)
+                }
+            </div>
         </div>
     );
 };
