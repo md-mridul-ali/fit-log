@@ -11,17 +11,17 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li className="text-lg font-medium text-gray-700">
+      <li className="text-lg font-medium text-gray-200">
         <Link className={` ${pathName === '/' ? 'px-6 rounded-full bg-[#18230F] text-[#C2F800]' : ''}`} href="/">Workouts</Link>
       </li>
-      <li className="text-lg font-medium text-gray-700">
+      <li className="text-lg font-medium text-gray-200">
         <Link className={` ${pathName === '/plan' ? 'px-6 rounded-full bg-[#18230F] text-[#C2F800]' : ''}`} href="/plan">My Plan</Link>
       </li>
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-[#090A0D] shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -52,7 +52,7 @@ const Navbar = () => {
         <div>
           {/* <a className="btn btn-ghost text-xl"></a> */}
           <Link
-            className="flex justify-between items-center gap-2 text-xl font-bold"
+            className="flex justify-between items-center gap-2 text-xl font-bold text-white"
             href="/"
           >
             <Image src={logo} height={30} width={30} alt="logo"></Image>FITLOG
@@ -63,17 +63,17 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-4">
-        <Link href="" className="flex items-center gap-1">
-          <span className="text-lg font-medium text-gray-700">Plan</span>
+        <Link href="/plan" className="flex items-center gap-1">
+          <span className="text-lg font-medium text-gray-200">Plan</span>
 
           <div className="h-6 w-6 rounded-full bg-[#C2F800] flex items-center justify-center">
             {0}
           </div>
         </Link>
-        <Link href="" className="flex items-center gap-1">
-          <span className="text-lg font-medium text-gray-700">Saved</span>
+        <Link href="/plan" className="flex items-center gap-1">
+          <span className="text-lg font-medium text-gray-200">Saved</span>
 
-          <div className="h-6 w-6 rounded-full border-2 border-gray-500 flex items-center justify-center">
+          <div className="h-6 w-6 rounded-full border-2 border-gray-400 text-white flex items-center justify-center">
             {0}
           </div>
         </Link>

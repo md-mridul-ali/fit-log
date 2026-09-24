@@ -5,7 +5,7 @@ import logo from "../../../assets/logo.png"
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between items-center bg-[#15171d] text-white px-6 py-6">
+    <footer className="flex justify-between items-center bg-[#090A0D] text-white px-6 py-6">
       
       <Link className="flex justify-between items-center gap-2 font-medium text-lg" href="/"><Image src={logo} height={20} width={20} alt="logo"></Image>FITLOG</Link>
         <p className="text-[#6B7280]">

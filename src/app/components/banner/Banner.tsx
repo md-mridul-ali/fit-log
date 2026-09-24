@@ -3,7 +3,7 @@ import Image from "next/image";
 import bannerImage from "../../../assets/banner.png";
 const Banner = () => {
   return (
-    <section className="mt-10 mb-10 relative mx-auto w-full overflow-hidden rounded-xl border border-[#252830] bg-[#15171d]">
+    <section className="mt-10 mb-10 relative mx-auto w-full overflow-hidden rounded-xl border border-[#252830] bg-[#222630] ">
       <div className="flex min-h-[300px] items-center px-6 py-10 sm:px-10 lg:min-h-[300px] lg:px-12">
         {/* Content */}
         <div className="relative z-10 max-w-xl">
