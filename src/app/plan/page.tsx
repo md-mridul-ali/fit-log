@@ -1,7 +1,25 @@
+'use client'
+import { FitContext } from "@/context/FitContext";
 import Link from "next/link";
-import React from "react";
+import React, { useContext } from "react";
+import { IData } from '@/types/dataType';
 
 const PlanPage = () => {
+
+  const {plan,setPlan, save,setSave} = useContext(FitContext)as {
+            plan: IData[];
+            setPlan: React.Dispatch<React.SetStateAction<IData[]>>;
+            save: IData[];
+            setSave: React.Dispatch<React.SetStateAction<IData[]>>;
+        };
+  // const {save,setSave} = useContext(FitContext)as {
+  //           save: IData[];
+  //           setSave: React.Dispatch<React.SetStateAction<IData[]>>;
+  //       };
+  console.log(plan);
+  console.log(save);
+
+
   return (
     <div className="py-8">
       <h2 className="text-white text-2xl font-bold">MY PLAN</h2>
@@ -71,6 +89,8 @@ const PlanPage = () => {
         </div>
       </div>
 
+
+
       <div className="flex flex-col justify-center items-center h-[200px] w-[full] border-2 border-gray-900 border-dashed rounded-lg">
             <h2 className="text-2xl text-white font-bold">NOTHING HERE YET</h2>
             <p className="text-gray-500">Browse the library and add a lift to get today moving.</p>
@@ -78,6 +98,7 @@ const PlanPage = () => {
                 <Link href="/"><button className="py-2 px-4 rounded-3xl bg-[#C2F10D] font-semibold">Go to workouts</button></Link>
             </div>
       </div>
+
     </div>
   );
 };

@@ -7,7 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const WorkoutCard = ({ data }: { data: IData }) => {
-  const { name, image, muscleGroups, equipment, duration, caloriesBurned, rating } = data;
+  const { id, name, image, muscleGroups, equipment, duration, caloriesBurned, rating } = data;
 
   return (
     <div className="bg-[#222630] border-2 border-gray-700 rounded-xl">
@@ -46,7 +46,7 @@ const WorkoutCard = ({ data }: { data: IData }) => {
             </div>
         </div>
         <div className="mb-5">
-            <Link href=""><button className="btn-block py-2 bg-[#c6f600] rounded-lg text-xl">View Details</button></Link>
+            <Link href={`workouts/${id}`}><button className="btn-block py-2 bg-[#c6f600] rounded-lg text-xl">View Details</button></Link>
         </div>
       </div>
     </div>

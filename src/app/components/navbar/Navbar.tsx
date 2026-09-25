@@ -1,11 +1,25 @@
 'use client'
 import Link from "next/link";
-import React from "react";
+import React, { use } from "react";
 import logo from "../../../assets/logo.png";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { FitContext } from "@/context/FitContext";
+import { IData } from '@/types/dataType';
 
 const Navbar = () => {
+
+  const {plan, setPlan, save, setSave} = use(FitContext)as {
+          plan: IData[];
+          setPlan: React.Dispatch<React.SetStateAction<IData[]>>;
+          save: IData[];
+          setSave: React.Dispatch<React.SetStateAction<IData[]>>;
+      };
+  // const {save, setSave} = use(FitContext)as {
+  //         save: IData[];
+  //         setSave: React.Dispatch<React.SetStateAction<IData[]>>;
+  //     };
+  
 
   const pathName = usePathname();
 
@@ -67,14 +81,14 @@ const Navbar = () => {
           <span className="text-lg font-medium text-gray-200">Plan</span>
 
           <div className="h-6 w-6 rounded-full bg-[#C2F800] flex items-center justify-center">
-            {0}
+            {plan.length}
           </div>
         </Link>
         <Link href="/plan" className="flex items-center gap-1">
           <span className="text-lg font-medium text-gray-200">Saved</span>
 
           <div className="h-6 w-6 rounded-full border-2 border-gray-400 text-white flex items-center justify-center">
-            {0}
+            {save.length}
           </div>
         </Link>
       </div>
