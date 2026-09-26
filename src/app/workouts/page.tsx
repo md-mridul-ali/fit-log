@@ -1,9 +1,9 @@
-import React from 'react';
+
 import WorkoutCard from '../components/workoutCard/WorkoutCard';
 import { IData } from '@/types/dataType';
 
 const getData = async() =>{
-    const res = await fetch('https://api.abcz.workers.dev/api/fitlog');
+    const res = await fetch('https://api.api-store.workers.dev/api/fitlog');
     if(!res.ok){
         throw new Error('Failed to fetch the data');
     }

@@ -37,10 +37,8 @@ const PlanCard = ({ data }: { data: IData }) => {
   return (
     <div className="mt-5 flex flex-col gap-5 rounded-lg border-2 border-gray-500 p-4 lg:flex-row lg:items-center lg:justify-between">
 
-      {/* Left Section */}
       <div className="flex min-w-0 flex-col gap-4 sm:flex-row sm:items-center">
 
-        {/* Image */}
         <div className="shrink-0">
           <img
             src={image}
@@ -49,7 +47,6 @@ const PlanCard = ({ data }: { data: IData }) => {
           />
         </div>
 
-        {/* Information */}
         <div className="min-w-0">
 
           <h2 className="text-xl font-medium text-white">
@@ -60,7 +57,6 @@ const PlanCard = ({ data }: { data: IData }) => {
             {equipment}
           </p>
 
-          {/* Stats */}
           <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
 
             <div className="flex items-center gap-1 text-gray-400">
@@ -82,7 +78,6 @@ const PlanCard = ({ data }: { data: IData }) => {
         </div>
       </div>
 
-      {/* Buttons */}
       <div className="flex flex-wrap items-center gap-3 lg:shrink-0">
 
         <Link href={`/workouts/${id}`}>
@@ -91,7 +86,6 @@ const PlanCard = ({ data }: { data: IData }) => {
           </button>
         </Link>
 
-        {/* Mark as Done */}
         <button
           onClick={() => removeFromPlan("Exercise completed!")}
           className="flex items-center gap-1 rounded-xl bg-[#C2F800] px-3 py-2 text-black transition hover:bg-[#d4ff33]"
@@ -100,7 +94,6 @@ const PlanCard = ({ data }: { data: IData }) => {
           <span>Mark as Done</span>
         </button>
 
-        {/* Remove */}
         <button
           onClick={() => removeFromPlan("Exercise removed from your plan!")}
           className="text-gray-400 transition hover:text-red-500"

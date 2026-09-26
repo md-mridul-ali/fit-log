@@ -14,7 +14,6 @@ const PlanPage = () => {
     setSave: React.Dispatch<React.SetStateAction<IData[]>>;
   };
 
-  //sort by
   const [sortby, setSortby] = useState<"duration" | "caloriesBurned" | "rating">("duration")
 
   const sortDatas = (datas:IData[]) =>{
@@ -37,7 +36,6 @@ const PlanPage = () => {
   const sortPlan = sortDatas(plan)
   const sortSave = sortDatas(save)
 
-  // Active tab
   const [activeTab, setActiveTab] = useState("plan");
   let currentData = plan;
 
@@ -59,17 +57,15 @@ const PlanPage = () => {
 
   return (
     <div className="py-8">
-      {/* Heading */}
+
       <h2 className="text-2xl font-bold text-white">MY PLAN</h2>
 
       <p className="text-gray-500">
         Cap of five lifts for today. Finish them, then load more.
       </p>
 
-      {/* ================= STATS ================= */}
-
       <div className="mt-5 grid grid-cols-1 divide-y overflow-hidden rounded-2xl border-2 border-gray-600 bg-[#222630] divide-gray-600 shadow-sm sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-        {/* Exercise */}
+
         <div className="flex items-center justify-center gap-4 p-5">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xl">
             🏋️
@@ -84,7 +80,6 @@ const PlanPage = () => {
           </div>
         </div>
 
-        {/* Minutes */}
         <div className="flex items-center justify-center gap-4 p-5">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-green-50 text-xl">
             ⏱️
@@ -97,7 +92,6 @@ const PlanPage = () => {
           </div>
         </div>
 
-        {/* Calories */}
         <div className="flex items-center justify-center gap-4 p-5">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-orange-50 text-xl">
             🔥
@@ -111,14 +105,11 @@ const PlanPage = () => {
         </div>
       </div>
 
-      {/* ================= TABS ================= */}
 
       <div className="mt-10">
-        {/* Buttons */}
 
         <div className="flex justify-between mb-2">
           <div className="flex">
-          {/* Today's Plan */}
 
           <button
             onClick={() => setActiveTab("plan")}
@@ -131,8 +122,6 @@ const PlanPage = () => {
             Todays Plan
           </button>
 
-          {/* Saved */}
-
           <button
             onClick={() => setActiveTab("save")}
             className={`px-5 py-3 text-sm font-medium ${
@@ -144,8 +133,6 @@ const PlanPage = () => {
             Saved
           </button>
         </div>
-
-        {/* sort by */}
 
         <div className="">
           <select
@@ -162,11 +149,7 @@ const PlanPage = () => {
         </div>
         </div>
 
-
-        {/* ================= CARD CONTENT ================= */}
-
         <div className="rounded-xl bg-[#222630] p-5">
-          {/* Today's Plan */}
 
           {activeTab === "plan" && (
             <>
@@ -181,8 +164,6 @@ const PlanPage = () => {
               )}
             </>
           )}
-
-          {/* Saved */}
 
           {activeTab === "save" && (
             <>

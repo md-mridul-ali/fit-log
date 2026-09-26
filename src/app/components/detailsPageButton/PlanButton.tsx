@@ -11,11 +11,10 @@ const PlanButton = ({ data }: { data: IData }) => {
     setPlan: React.Dispatch<React.SetStateAction<IData[]>>;
   };
 
-  // Check if this exercise is already in the plan
   const alreadyAdded = plan.some((item) => item.id === data.id);
 
   const handlePlan = (planData: IData) => {
-    // Prevent duplicate
+
     if (alreadyAdded) {
       toast.info("This exercise is already in your plan!");
       return;

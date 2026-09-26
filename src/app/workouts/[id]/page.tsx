@@ -1,11 +1,9 @@
 import PlanButton from "@/app/components/detailsPageButton/PlanButton";
 import SaveButton from "@/app/components/detailsPageButton/SaveButton";
 import { IData } from "@/types/dataType";
-import Image from "next/image";
-import React from "react";
 
 const getData = async () => {
-  const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
+  const res = await fetch("https://api.api-store.workers.dev/api/fitlog");
 
   if (!res.ok) {
     throw new Error("Failed to fetch the data");
@@ -35,7 +33,6 @@ const DetailsPage = async ({ params }: IDetailsPage) => {
             className="h-full min-h-[400px] w-full object-cover"
           />
         </div>
-        {/* <Image src={data.image} alt={data.name} height={400} width={350}></Image> */}
 
         {/* Details */}
         <div className="flex flex-col">
@@ -84,7 +81,6 @@ const DetailsPage = async ({ params }: IDetailsPage) => {
             ))}
           </div>
 
-          {/* Instructions */}
           <div className="mt-6">
             <h2 className="text-sm font-bold uppercase tracking-wide">
               Instructions
@@ -101,7 +97,6 @@ const DetailsPage = async ({ params }: IDetailsPage) => {
             </ol>
           </div>
 
-          {/* Actions */}
           <div className="mt-7 flex flex-wrap gap-3">
             <PlanButton data={data}></PlanButton>
             <SaveButton data={data}></SaveButton>

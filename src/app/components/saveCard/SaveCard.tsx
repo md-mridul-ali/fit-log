@@ -1,12 +1,10 @@
 import { FitContext } from '@/context/FitContext';
-// import React, { use } from 'react';
 import { useContext } from "react";
 import { IData } from "@/types/dataType";
 import { MdAccessTimeFilled } from "react-icons/md";
 import { IoTimerSharp } from "react-icons/io5";
 import { FaRegStar } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-// import { TiTick } from "react-icons/ti";
 import Link from "next/link";
 import { toast } from 'react-toastify';
 
@@ -37,6 +35,7 @@ const SaveCard = ({ data }: { data: IData }) => {
             alt={name}
             className="h-24 w-full rounded-lg object-cover sm:h-24 sm:w-40"
           />
+          
         </div>
 
         <div className="min-w-0">
@@ -44,7 +43,6 @@ const SaveCard = ({ data }: { data: IData }) => {
 
           <p className="text-gray-400">{equipment}</p>
 
-          {/* Stats */}
           <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2">
             <div className="flex items-center gap-1 text-gray-400">
               <MdAccessTimeFilled className="text-[#C2F800]" />
@@ -64,7 +62,6 @@ const SaveCard = ({ data }: { data: IData }) => {
         </div>
       </div>
 
-      {/* Buttons */}
       <div className="flex flex-wrap items-center gap-3 lg:shrink-0">
         <Link href={`workouts/${id}`}>
           <button className="rounded-3xl border-2 border-gray-400 px-4 py-2 text-white transition hover:border-white">

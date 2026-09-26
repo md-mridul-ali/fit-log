@@ -4,7 +4,7 @@ import { MdAccessTimeFilled } from "react-icons/md";
 import { IoTimerSharp } from "react-icons/io5";
 import { FaRegStar } from "react-icons/fa";
 import Link from "next/link";
-import Image from "next/image";
+
 
 const WorkoutCard = ({ data }: { data: IData }) => {
   const { id, name, image, muscleGroups, equipment, duration, caloriesBurned, rating } = data;
@@ -16,7 +16,7 @@ const WorkoutCard = ({ data }: { data: IData }) => {
         src={image}
         alt={name}
       ></img>
-      {/* <Image src={image} height={200} width={250} alt="name"></Image> */}
+     
       <div className="px-5">
         <div className="flex flex-wrap gap-2 mt-5">
           {muscleGroups.map((group) => (
