@@ -7,7 +7,7 @@ statistics such as exercise count, duration, and calories.
 
 ## 🔗 Live Demo
 
-**Live Link:** `https://fit-log-tawny-omega.vercel.app/`
+[FitLog](https://fit-log-tawny-omega.vercel.app/)
 
 
 ## ✨ Key Features
