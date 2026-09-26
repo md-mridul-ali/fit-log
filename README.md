@@ -7,9 +7,8 @@ statistics such as exercise count, duration, and calories.
 
 ## 🔗 Live Demo
 
-**Live Link:** `YOUR_LIVE_LINK_HERE`
+**Live Link:** `https://fit-log-tawny-omega.vercel.app/`
 
-> Replace `YOUR_LIVE_LINK_HERE` with your deployed Vercel/Netlify URL.
 
 ## ✨ Key Features
 
