@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'img.magnific.com',
         port: '',
-        pathname: '**',
+        pathname: '/free-photo/**',
         search: '',
       },
     ],

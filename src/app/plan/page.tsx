@@ -1,33 +1,74 @@
-'use client'
+"use client";
 import { FitContext } from "@/context/FitContext";
-import Link from "next/link";
-import React, { useContext } from "react";
-import { IData } from '@/types/dataType';
+import React, { useContext, useState } from "react";
+import { IData } from "@/types/dataType";
+import NoData from "../components/nodata/NoData";
+import PlanCard from "../components/planCard/PlanCard";
+import SaveCard from "../components/saveCard/SaveCard";
 
 const PlanPage = () => {
+  const { plan, save } = useContext(FitContext) as {
+    plan: IData[];
+    setPlan: React.Dispatch<React.SetStateAction<IData[]>>;
+    save: IData[];
+    setSave: React.Dispatch<React.SetStateAction<IData[]>>;
+  };
 
-  const {plan,setPlan, save,setSave} = useContext(FitContext)as {
-            plan: IData[];
-            setPlan: React.Dispatch<React.SetStateAction<IData[]>>;
-            save: IData[];
-            setSave: React.Dispatch<React.SetStateAction<IData[]>>;
-        };
-  // const {save,setSave} = useContext(FitContext)as {
-  //           save: IData[];
-  //           setSave: React.Dispatch<React.SetStateAction<IData[]>>;
-  //       };
-  console.log(plan);
-  console.log(save);
+  //sort by
+  const [sortby, setSortby] = useState<"duration" | "caloriesBurned" | "rating">("duration")
 
+  const sortDatas = (datas:IData[]) =>{
+
+    const sortedDatas = [...datas];
+
+    if(sortby === "duration"){
+      sortedDatas.sort((a,b) => b.duration - a.duration)
+    }
+    else if(sortby === "caloriesBurned"){
+      sortedDatas.sort((a,b) => b.duration - a.duration)
+    }
+    else if(sortby === "rating"){
+      sortedDatas.sort((a,b) => b.duration - a.duration)
+    }
+    return sortedDatas;
+
+  }
+
+  const sortPlan = sortDatas(plan)
+  const sortSave = sortDatas(save)
+
+  // Active tab
+  const [activeTab, setActiveTab] = useState("plan");
+  let currentData = plan;
+
+  if (activeTab === "save") {
+    currentData = save;
+  }
+
+  const totalExercises = currentData.length;
+
+  const totalMinutes = currentData.reduce(
+    (total, exercise) => total + exercise.duration,
+    0,
+  );
+
+  const totalCalories = currentData.reduce(
+    (total, exercise) => total + exercise.caloriesBurned,
+    0,
+  );
 
   return (
     <div className="py-8">
-      <h2 className="text-white text-2xl font-bold">MY PLAN</h2>
+      {/* Heading */}
+      <h2 className="text-2xl font-bold text-white">MY PLAN</h2>
+
       <p className="text-gray-500">
         Cap of five lifts for today. Finish them, then load more.
       </p>
 
-      <div className="mt-5 grid grid-cols-1 divide-y bg-[#222630] border-2 border-gray-600 divide-gray-600 overflow-hidden rounded-2xl shadow-sm sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+      {/* ================= STATS ================= */}
+
+      <div className="mt-5 grid grid-cols-1 divide-y overflow-hidden rounded-2xl border-2 border-gray-600 bg-[#222630] divide-gray-600 shadow-sm sm:grid-cols-3 sm:divide-x sm:divide-y-0">
         {/* Exercise */}
         <div className="flex items-center justify-center gap-4 p-5">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-50 text-xl">
@@ -36,7 +77,10 @@ const PlanPage = () => {
 
           <div>
             <p className="text-lg font-medium text-gray-300">Exercise</p>
-            <p className="text-2xl font-bold text-[#C2F800]">{0}</p>
+
+            <p className="text-2xl font-bold text-[#C2F800]">
+              {totalExercises}
+            </p>
           </div>
         </div>
 
@@ -48,7 +92,8 @@ const PlanPage = () => {
 
           <div>
             <p className="text-lg font-medium text-gray-300">Minutes</p>
-            <p className="text-2xl font-bold text-white">{0}</p>
+
+            <p className="text-2xl font-bold text-white">{totalMinutes}</p>
           </div>
         </div>
 
@@ -60,45 +105,100 @@ const PlanPage = () => {
 
           <div>
             <p className="text-lg font-medium text-gray-300">Calories</p>
-            <p className="text-2xl font-bold text-white">{0}</p>
+
+            <p className="text-2xl font-bold text-white">{totalCalories}</p>
           </div>
         </div>
       </div>
 
-      <div className="flex justify-between items-center py-8">
-        <div className="bg-[#232732] py-2 px-4 rounded-lg flex gap-4">
-          <Link href="">
-            <button className="text-gray-200">Todays Plan</button>
-          </Link>
-          <Link href="">
-            <button className="text-gray-200">Saved</button>
-          </Link>
-        </div>
-        <div className="flex items-center gap-3">
-          <p className="text-gray-300">Sort By</p>
-          <select
-            className="rounded-lg border-2 border-gray-600 bg-[#232732] px-4 py-1
-                   text-gray-200 outline-none transition
-                   "
+      {/* ================= TABS ================= */}
+
+      <div className="mt-10">
+        {/* Buttons */}
+
+        <div className="flex justify-between mb-2">
+          <div className="flex">
+          {/* Today's Plan */}
+
+          <button
+            onClick={() => setActiveTab("plan")}
+            className={`px-5 py-3 text-sm font-medium ${
+              activeTab === "plan"
+                ? "border-b-2 border-[#C2F800] text-[#C2F800]"
+                : "text-gray-400 hover:text-white"
+            }`}
           >
-            <option value="">Select Criteria</option>
-            <option value="duration">Duration</option>
-            <option value="rating">Rating</option>
-            <option value="calories">Calories</option>
+            Todays Plan
+          </button>
+
+          {/* Saved */}
+
+          <button
+            onClick={() => setActiveTab("save")}
+            className={`px-5 py-3 text-sm font-medium ${
+              activeTab === "save"
+                ? "border-b-2 border-[#C2F800] text-[#C2F800]"
+                : "text-gray-400 hover:text-white"
+            }`}
+          >
+            Saved
+          </button>
+        </div>
+
+        {/* sort by */}
+
+        <div className="">
+          <select
+            value={sortby}
+            onChange={(e) => setSortby(e.target.value as "duration" | "caloriesBurned" | "rating")}
+            defaultValue="Pick a Runtime"
+            className="select select-success"
+          >
+            <option disabled={true}>Sort by</option>
+            <option value={"duration"}>Duration</option>
+            <option value={"caloriesBurned"}>Calories Burned</option>
+            <option value={"rating"}>Rating</option>
           </select>
         </div>
+        </div>
+
+
+        {/* ================= CARD CONTENT ================= */}
+
+        <div className="rounded-xl bg-[#222630] p-5">
+          {/* Today's Plan */}
+
+          {activeTab === "plan" && (
+            <>
+              {sortPlan.length > 0 ? (
+                <div className="space-y-4">
+                  {sortPlan.map((data: IData) => (
+                    <PlanCard key={data.id} data={data} />
+                  ))}
+                </div>
+              ) : (
+                <NoData />
+              )}
+            </>
+          )}
+
+          {/* Saved */}
+
+          {activeTab === "save" && (
+            <>
+              {sortSave.length > 0 ? (
+                <div className="space-y-4">
+                  {sortSave.map((data: IData) => (
+                    <SaveCard key={data.id} data={data} />
+                  ))}
+                </div>
+              ) : (
+                <NoData />
+              )}
+            </>
+          )}
+        </div>
       </div>
-
-
-
-      <div className="flex flex-col justify-center items-center h-[200px] w-[full] border-2 border-gray-900 border-dashed rounded-lg">
-            <h2 className="text-2xl text-white font-bold">NOTHING HERE YET</h2>
-            <p className="text-gray-500">Browse the library and add a lift to get today moving.</p>
-            <div className="mt-5">
-                <Link href="/"><button className="py-2 px-4 rounded-3xl bg-[#C2F10D] font-semibold">Go to workouts</button></Link>
-            </div>
-      </div>
-
     </div>
   );
 };

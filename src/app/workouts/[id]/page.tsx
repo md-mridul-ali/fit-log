@@ -20,6 +20,7 @@ interface IDetailsPage {
 
 const DetailsPage = async ({ params }: IDetailsPage) => {
   const { id } = await params;
+
   const datas: IData[] = await getData();
   const data = datas.find((data) => data.id.toString() === id) as IData;
 
@@ -102,9 +103,8 @@ const DetailsPage = async ({ params }: IDetailsPage) => {
 
           {/* Actions */}
           <div className="mt-7 flex flex-wrap gap-3">
-           
-             <PlanButton data={data}></PlanButton>
-             <SaveButton data={data}></SaveButton>
+            <PlanButton data={data}></PlanButton>
+            <SaveButton data={data}></SaveButton>
           </div>
         </div>
       </div>

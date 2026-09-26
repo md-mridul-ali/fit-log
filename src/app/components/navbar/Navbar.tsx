@@ -15,10 +15,6 @@ const Navbar = () => {
           save: IData[];
           setSave: React.Dispatch<React.SetStateAction<IData[]>>;
       };
-  // const {save, setSave} = use(FitContext)as {
-  //         save: IData[];
-  //         setSave: React.Dispatch<React.SetStateAction<IData[]>>;
-  //     };
   
 
   const pathName = usePathname();
@@ -38,7 +34,7 @@ const Navbar = () => {
     <div className="navbar sticky top-0 z-50 bg-[#090A0D] shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div tabIndex={0} role="button" className="btn btn-ghost text-white lg:hidden">
             <svg
               aria-label="Menu"
               xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +54,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={-1}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-[#090A0D] rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {links}
           </ul>
